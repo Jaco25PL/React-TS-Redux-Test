@@ -1,0 +1,178 @@
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "Monsieur",
+        "first": "Gilles",
+        "last": "Lacroix"
+      },
+      "location": {
+        "street": {
+          "number": 4400,
+          "name": "Place de L'Abbé-Basset"
+        },
+        "city": "Corbeyrier",
+        "state": "Fribourg",
+        "country": "Switzerland",
+        "postcode": 4749,
+        "coordinates": {
+          "latitude": "-57.4477",
+          "longitude": "-20.2032"
+        },
+        "timezone": {
+          "offset": "-3:30",
+          "description": "Newfoundland"
+        }
+      },
+      "email": "gilles.lacroix@example.com",
+      "login": {
+        "uuid": "57473331-3e20-4950-8e1e-d0546d68a118",
+        "username": "beautifultiger843",
+        "password": "think",
+        "salt": "m4kbMvaI",
+        "md5": "301fe588dd2dd64227f86bfee7765f05",
+        "sha1": "388f8d77d5a67ca2211a099b166d7219a768182b",
+        "sha256": "b23d6bedc1d13e3205f0a07ff6c99403851a3983d11396737c05ecc826a3d747"
+      },
+      "dob": {
+        "date": "1947-10-30T23:29:11.705Z",
+        "age": 76
+      },
+      "registered": {
+        "date": "2009-07-11T12:27:23.838Z",
+        "age": 14
+      },
+      "phone": "079 356 10 58",
+      "cell": "079 455 33 81",
+      "id": {
+        "name": "AVS",
+        "value": "756.8107.2091.78"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/28.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/28.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/28.jpg"
+      },
+      "nat": "CH"
+    },
+    {
+    "gender": "male",
+    "name": {
+        "title": "Mr",
+        "first": "Paul",
+        "last": "Davies"
+    },
+    "location": {
+        "street": {
+        "number": 9689,
+        "name": "South Street"
+        },
+        "city": "Durham",
+        "state": "Dorset",
+        "country": "United Kingdom",
+        "postcode": "C23 9XE",
+        "coordinates": {
+        "latitude": "-4.8948",
+        "longitude": "-146.1688"
+        },
+        "timezone": {
+        "offset": "+1:00",
+        "description": "Brussels, Copenhagen, Madrid, Paris"
+        }
+    },
+    "email": "paul.davies@example.com",
+    "login": {
+        "uuid": "b37fb441-c6ae-4abc-a9c4-5c0ec0a765ab",
+        "username": "smallfish400",
+        "password": "moose",
+        "salt": "XAO6NSX6",
+        "md5": "709003a8ccd90a01a44cc89b5f6a1a5c",
+        "sha1": "de47e3198ca5685230f4c75a8919fe3c4aea3745",
+        "sha256": "83e236bccb1bc5f9b6704b8d2882b8adea67895ee2bb682c88220c346395bbb6"
+    },
+    "dob": {
+        "date": "1988-04-19T13:00:10.517Z",
+        "age": 36
+    },
+    "registered": {
+        "date": "2002-03-23T10:14:23.195Z",
+        "age": 22
+    },
+    "phone": "016973 43740",
+    "cell": "07133 381392",
+    "id": {
+        "name": "NINO",
+        "value": "MX 29 70 59 K"
+    },
+    "picture": {
+        "large": "https://randomuser.me/api/portraits/men/89.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/89.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/89.jpg"
+    },
+    "nat": "GB"
+    },
+    {
+    "gender": "male",
+    "name": {
+        "title": "Mr",
+        "first": "Antoine",
+        "last": "Richard"
+    },
+    "location": {
+        "street": {
+        "number": 3687,
+        "name": "Rue Bony"
+        },
+        "city": "Colombes",
+        "state": "Bouches-du-Rhône",
+        "country": "France",
+        "postcode": 87782,
+        "coordinates": {
+        "latitude": "-17.1131",
+        "longitude": "-4.2095"
+        },
+        "timezone": {
+        "offset": "+2:00",
+        "description": "Kaliningrad, South Africa"
+        }
+    },
+    "email": "antoine.richard@example.com",
+    "login": {
+        "uuid": "1d85641d-ace2-42a1-9cfb-280f7cd8c747",
+        "username": "yellowpanda228",
+        "password": "rufus",
+        "salt": "PX5ihNhZ",
+        "md5": "8b734117b5f87c724754d1b32482779b",
+        "sha1": "bcbe66894753d46ce22d424707952eb013e364ab",
+        "sha256": "ce2bce6225be0d185f27933c0e77c94b4c4510804ef23138ff946e86e217067d"
+    },
+    "dob": {
+        "date": "1976-04-14T12:31:50.566Z",
+        "age": 48
+    },
+    "registered": {
+        "date": "2003-04-30T03:06:05.590Z",
+        "age": 21
+    },
+    "phone": "03-78-58-42-46",
+    "cell": "06-05-92-95-91",
+    "id": {
+        "name": "INSEE",
+        "value": "1760376081196 35"
+    },
+    "picture": {
+        "large": "https://randomuser.me/api/portraits/men/98.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/98.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/98.jpg"
+    },
+    "nat": "FR"
+    }
+  ],
+  "info": {
+    "seed": "335bed16d96ebecf",
+    "results": 3,
+    "page": 1,
+    "version": "1.4"
+  }
+}
