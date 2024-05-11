@@ -1,87 +1,59 @@
 import './App.css'
-import type { Users , User } from './types'
-import { useEffect, useState } from 'react'
-
-// import results from './mock/results.json'
-
-
-
+import type { Users } from './types'
+import { useEffect, useMemo, useState } from 'react'
+import results from './mock/results.json'
+import { fetchingData } from './services/users'
+import { Table } from './components/Table'
 
 export default function App () {
 
     const [ users , setUsers ] = useState<Users[]>([])
+    const [ mock , setMock ] = useState<Users[]>([])
+    const [ paint , setPaint ] = useState<boolean>(false)
+    const [ sort , setSort ] = useState<boolean>(false)
 
     useEffect(() => {
-        const fetchingData = async () => {
+       
+        // fetchingData().then(setUsers)
 
-            const URL = "https://randomuser.me/api/?results=10"
+        const mockmapped = results?.results.map(user => ({
+            id: user.id.value,
+            thumbnail: user.picture.thumbnail,
+            firstName: user.name.first,
+            lastName: user.name.last,
+            country: user.location.country
+        })) 
 
-            const response = await fetch(URL)
-            if(!response.ok) throw new Error(`Error fetching data. Status code: ${response.status}`)
-
-            const usersData = await response.json()
-
-            const mappedUsers = usersData.results.map((user: User) => ({
-                thumbnail: user.picture.thumbnail,
-                firstName: user.name.first,
-                lastName: user.name.last,
-                country: user.location.country
-            }))
-
-            setUsers(mappedUsers)
-        }
-
-        fetchingData()
+        setMock(mockmapped)
     }, [])
 
+    const handlePaintedRows: React.MouseEventHandler<HTMLButtonElement> = (): void => {
+        setPaint(value => !value)
+    }
+
+    const sortedUsers = useMemo( () => {
+        return (sort && mock)
+        ? [...mock].sort((a , b) => a.country.localeCompare(b.country))
+        : mock 
+    }, [mock, sort]) 
+
+    const handleCountrySort = () => {
+        setSort(value => !value)
+    }
 
     return(
-        <main>
+        <main className='  w-full'>
             <h1 className='text-4xl'>Users</h1>
 
-            <table>
-                <thead>
-                    <tr className='[&>th]:py-5'>
-                        <th>IMAGE</th>
-                        <th>NAME</th>
-                        <th>LAST NAME</th>
-                        <th>COUNTRY</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
+            <div className='flex gap-2'>
+                <button onClick={handlePaintedRows} type='button'>Paint Rows</button>
+                <button onClick={handleCountrySort}  type='button'>Order by Country</button>
+                <button type='button'>Reset Filters</button>
+                <input type='search' name='search' placeholder='Search by Country' />
+            </div>
 
-                <tbody>
-                    {
-                        users?.map((user, index) => (
-                            <tr key={index} className=''>
-
-                                <th className=''>
-                                    <img src={user.thumbnail} alt={`${user.firstName} ${user.lastName}`} />
-                                </th>
-
-                                <th className=''>
-                                    <span>{user.firstName}</span>
-                                </th>
-                                <th className="">
-                                    <span>{user.lastName}</span>
-                                </th>
-                                <th className="">
-                                    <span>{user.country}</span>
-                                </th>
-                                <th className="">
-                                    <button type='button'>delete</button>
-                                </th>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
-            
+            <Table paint={paint} mock={sortedUsers} />
 
         </main>
     )
-
-
-
-
 }

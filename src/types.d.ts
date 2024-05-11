@@ -1,4 +1,5 @@
 export interface Users {
+    id: string
     thumbnail: string 
     firstName:string
     lastName: string
@@ -6,6 +7,7 @@ export interface Users {
 }
 
 export interface User {
+    id: { value: string }
     picture: { thumbnail: string }
     location: { country: string }
     name: {
