@@ -1,58 +1,75 @@
 import './App.css'
 import type { Users } from './types'
 import { useEffect, useMemo, useState } from 'react'
-import results from './mock/results.json'
 import { fetchingData } from './services/users'
 import { Table } from './components/Table'
+import { useDebounce } from './hooks/useDebounce'
 
 export default function App () {
 
     const [ users , setUsers ] = useState<Users[]>([])
-    const [ mock , setMock ] = useState<Users[]>([])
     const [ paint , setPaint ] = useState<boolean>(false)
     const [ sort , setSort ] = useState<boolean>(false)
+    const [ search , setSearch ] = useState<string>()
+    const [ currentUsers, setCurrentUsers ] = useState<Users[]>([])
 
     useEffect(() => {
-       
-        // fetchingData().then(setUsers)
-
-        const mockmapped = results?.results.map(user => ({
-            id: user.id.value,
-            thumbnail: user.picture.thumbnail,
-            firstName: user.name.first,
-            lastName: user.name.last,
-            country: user.location.country
-        })) 
-
-        setMock(mockmapped)
+        fetchingData().then(setUsers)
     }, [])
 
     const handlePaintedRows: React.MouseEventHandler<HTMLButtonElement> = (): void => {
         setPaint(value => !value)
     }
 
-    const sortedUsers = useMemo( () => {
-        return (sort && mock)
-        ? [...mock].sort((a , b) => a.country.localeCompare(b.country))
-        : mock 
-    }, [mock, sort]) 
+    const handleDeleteUser = (userID: string) => {
+            // const newUsers = currentUsers.filter(user => user.id !== userID)
+            // setCurrentUsers(newUsers)
+    }
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const query = e.target.value
+        setSearch(query)
+    }
+
+    const memoSearch = useMemo(() => {
+        return search && search?.length > 0 ? users.filter(user => user.country?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) : users
+    }, [search, users])
+
+    const debouncedSearch = useDebounce(memoSearch, 300)
 
     const handleCountrySort = () => {
         setSort(value => !value)
     }
 
+    const sortedUsers = useMemo( () => {
+        return (sort && users)
+        ? [...users].sort((a , b) => a.country.localeCompare(b.country))
+        : users 
+    }, [users, sort]) 
+
+    const handleReset = () => {
+        if(users) setCurrentUsers(users)
+    }
+
+    useEffect(() => setCurrentUsers(sortedUsers), [sortedUsers])
+    useEffect(() => setCurrentUsers(debouncedSearch), [debouncedSearch])
+
     return(
         <main className='  w-full'>
             <h1 className='text-4xl'>Users</h1>
 
-            <div className='flex gap-2'>
+            <div className='flex gap-2 justify-center my-5'>
                 <button onClick={handlePaintedRows} type='button'>Paint Rows</button>
                 <button onClick={handleCountrySort}  type='button'>Order by Country</button>
-                <button type='button'>Reset Filters</button>
-                <input type='search' name='search' placeholder='Search by Country' />
+                <button onClick={handleReset} type='button'>Reset Filters</button>
+                <input 
+                onChange={handleSearch}
+                type='search' 
+                name='search' 
+                placeholder='Search by Country' />
             </div>
 
-            <Table paint={paint} mock={sortedUsers} />
+            <Table paint={paint} users={currentUsers} handleDeleteUser={handleDeleteUser} />
 
         </main>
     )

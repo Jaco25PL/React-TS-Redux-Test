@@ -2,17 +2,17 @@ import type { Users } from "../types"
 
 interface Props {
     paint: boolean
-    mock: Users[]
+    users: Users[]
+    handleDeleteUser: (userID: string) => void
 }
 
-export function Table ({ paint, mock }: Props) {
-
+export function Table ({ paint, users, handleDeleteUser }: Props) {
 
     return (
 
         <table className='w-full'>
             <thead>
-                <tr className='[&>th]:py-5'>
+                <tr className='[&>th]:pb-5'>
                     <th>IMAGE</th>
                     <th>NAME</th>
                     <th>LAST NAME</th>
@@ -23,7 +23,7 @@ export function Table ({ paint, mock }: Props) {
 
             <tbody className={`${ paint ? '[&_tr:nth-child(even)]:bg-gray-700' : ''}`} >
                 {
-                        mock?.map((user, index) => (
+                        users?.map((user, index) => (
                         <tr key={index} >
 
                             <th>
@@ -33,7 +33,10 @@ export function Table ({ paint, mock }: Props) {
                             <th ><span>{user.firstName}</span></th>
                             <th ><span>{user.lastName}</span></th>
                             <th ><span>{user.country}</span></th>
-                            <th ><button type='button'>Delete</button></th>
+                            <th ><button 
+                                    type='button'
+                                    onClick={() => handleDeleteUser(user.id)}
+                                    >Delete</button></th>
                         </tr>
                     ))
                 }
