@@ -1,17 +1,29 @@
-# TEST
+# Techinal Test using REACT - REDUX - TYPESCRIPT 
 
-**The objective of this technical test is to create a simitar application to the one provided in this link:
-https ://xxxxx. To achieve this, you must use the API provided (HERE)[https ://randomuser.me/]**
+**In this test, we fetched a hundred users from the API (https://randomuser.me/) and displayed them in a table with some actions**
 
-## Here are the steps to follow
--[✅]- Fetch 100 rows of data using the API.
--[✅]- Display the data in a table format, similar to the example.
--[✅]- Provide the option to color rows as shown in the example.
--[✅]- Allow the data to be sorted by country as demonstrated in the example.
--[✅]- Enable the ability to delete a row as shown in the example.
--[✅]- Implement a feature that allows the user to restore the initial state, meaning that all deleted rows will be recovered.
--[✅]- Handle any potential errors that may occur.
--[✅]- Implement a feature that allows the user to fitter the data by country.
--[✅]- Avoid sorting users again the data when the user is changing fitter by country.
--[✅]- Sort by clicking on the column header.
--[]- Provide a README.md file with instructions on how to run the application.
+### ACTIONS
+- Paint rows
+- Order by country
+- Delete users
+- Search by country (input)
+- Reset delted users
+
+## Technologies Used
+- Vite
+- React
+- TypeScript
+- Redux Toolkit
+- Tailwind CSS
+
+## Getting Started
+To run this project locally, follow these steps:
+
+- Clone this repository to your local machine.
+- Navigate to the project directory.
+- Install dependencies using pnpm install
+- Start the development server using pnpm run
+- Open your web browser and visit http://localhost:3000 to view the application.
+
+## Contributions
+Contributions to this project are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
