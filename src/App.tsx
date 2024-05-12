@@ -24,6 +24,8 @@ export default function App () {
     const handleDeleteUser = (userID: string) => {
             // const newUsers = currentUsers.filter(user => user.id !== userID)
             // setCurrentUsers(newUsers)
+        console.log(userID)
+        
     }
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
