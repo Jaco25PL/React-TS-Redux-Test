@@ -1,4 +1,4 @@
-# Techinal Test using REACT - REDUX - TYPESCRIPT 
+# Techinal Test using REACT - TYPESCRIPT 
 
 **In this test, we fetched a hundred users from the API (https://randomuser.me/) and displayed them in a table with some actions**
 
@@ -13,7 +13,6 @@
 - Vite
 - React
 - TypeScript
-- Redux Toolkit
 - Tailwind CSS
 
 ## Getting Started
