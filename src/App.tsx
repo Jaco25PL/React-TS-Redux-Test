@@ -9,7 +9,7 @@ export default function App () {
 
     const [ users , setUsers ] = useState<Users[]>([])
     const [ paint , setPaint ] = useState<boolean>(false)
-    const [ sort , setSort ] = useState<boolean>(false)
+    const [ iSorting , setISorting ] = useState<string>('NONE') // we could use ENUMs here
     const [ search , setSearch ] = useState<string>()
     const originalUsers = useRef<Users[]>([])
 
@@ -42,19 +42,33 @@ export default function App () {
     const debouncedUsers = useDebounce(memoSearch, 300)
 
     const handleCountrySort = () => {
-        setSort(value => !value)
+        const newSortValue = iSorting === 'NONE' ? 'COUNTRY' : 'NONE'
+        setISorting(newSortValue)
     }
 
     const sortedUsers = useMemo( () => {
-        return (sort && debouncedUsers)
-        ? [...debouncedUsers].sort((a , b) => a.country.localeCompare(b.country))
-        : debouncedUsers 
-    }, [debouncedUsers, sort]) 
+
+        if(iSorting === 'NONE') return debouncedUsers
+
+        if(iSorting === 'COUNTRY'){
+            return [...debouncedUsers].sort((a , b) => a.country.localeCompare(b.country))
+        }
+
+        if(iSorting === 'NAME'){
+            return [...debouncedUsers].sort((a , b) => a.firstName.localeCompare(b.firstName)) 
+        }
+
+        if(iSorting === 'LASTN'){
+            return [...debouncedUsers].sort((a , b) => a.lastName.localeCompare(b.lastName)) 
+        }
+
+        return debouncedUsers
+
+    }, [debouncedUsers , iSorting]) 
 
     const handleReset = () => {
         if(originalUsers.current) setUsers(originalUsers.current)
     }
-
 
     return(
         <main className='  w-full'>
@@ -72,7 +86,7 @@ export default function App () {
                 className='rounded-md pl-3 font-semibold' />
             </header>
 
-            <Table paint={paint} users={sortedUsers} handleDeleteUser={handleDeleteUser} />
+            <Table setISorting={setISorting} paint={paint} users={sortedUsers} handleDeleteUser={handleDeleteUser} />
 
         </main>
     )

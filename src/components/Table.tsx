@@ -1,12 +1,13 @@
 import type { Users } from "../types"
 
 interface Props {
+    setISorting: (sort: string) => void 
     paint: boolean
     users: Users[]
     handleDeleteUser: (userID: string) => void
 }
 
-export function Table ({ paint, users, handleDeleteUser }: Props) {
+export function Table ({ setISorting, paint, users, handleDeleteUser }: Props) {
 
     return (
 
@@ -14,9 +15,9 @@ export function Table ({ paint, users, handleDeleteUser }: Props) {
             <thead>
                 <tr className='[&>th]:pb-5'>
                     <th>IMAGE</th>
-                    <th>NAME</th>
-                    <th>LAST NAME</th>
-                    <th>COUNTRY</th>
+                    <th onClick={() => setISorting('NAME')} className="active:text-blue-500 underline cursor-pointer">NAME</th>
+                    <th onClick={() => setISorting('LASTN')} className="active:text-blue-500 underline cursor-pointer">LAST NAME</th>
+                    <th onClick={() => setISorting('COUNTRY')} className="active:text-blue-500 underline cursor-pointer">COUNTRY</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
