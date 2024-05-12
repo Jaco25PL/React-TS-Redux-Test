@@ -7,7 +7,7 @@ export interface Users {
 }
 
 export interface User {
-    id: { value: string }
+    login: { uuid: string }
     picture: { thumbnail: string }
     location: { country: string }
     name: {

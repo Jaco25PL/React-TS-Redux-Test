@@ -1,8 +1,8 @@
-import type { User } from "../types"
+import type { User, Users } from "../types"
 
-export async function fetchingData  () {
+export async function fetchingData (): Promise<Users[]> {
     
-    const URL = "https://randomuser.me/api/?results=10"
+    const URL = "https://randomuser.me/api/?results=100"
     
     try {
 
@@ -12,7 +12,7 @@ export async function fetchingData  () {
         const usersData = await response.json()
 
         const mappedUsers = usersData.results.map((user: User) => ({
-            id: user.id.value,
+            id: user.login.uuid,
             thumbnail: user.picture.thumbnail,
             firstName: user.name.first,
             lastName: user.name.last,

@@ -21,22 +21,22 @@ export function Table ({ paint, users, handleDeleteUser }: Props) {
                 </tr>
             </thead>
 
-            <tbody className={`${ paint ? '[&_tr:nth-child(even)]:bg-gray-700' : ''}`} >
+            <tbody className={`${ paint ? '[&_tr:nth-child(even)]:bg-[#555] [&_tr:nth-child(odd)]:bg-[#333]' : ''}`} >
                 {
                         users?.map((user, index) => (
-                        <tr key={index} >
+                        <tr key={index} className="border-b-[3px] border-solid border-[#222]">
 
                             <th>
                                 <img className='mx-auto'  src={user.thumbnail} alt={`${user.firstName} ${user.lastName}`} />
                             </th>
 
-                            <th ><span>{user.firstName}</span></th>
-                            <th ><span>{user.lastName}</span></th>
-                            <th ><span>{user.country}</span></th>
-                            <th ><button 
+                            <td ><span>{user.firstName}</span></td>
+                            <td ><span>{user.lastName}</span></td>
+                            <td ><span>{user.country}</span></td>
+                            <td ><button 
                                     type='button'
                                     onClick={() => handleDeleteUser(user.id)}
-                                    >Delete</button></th>
+                                    >Delete</button></td>
                         </tr>
                     ))
                 }
